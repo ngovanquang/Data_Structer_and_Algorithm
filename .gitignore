@@ -1,0 +1,8 @@
+#.vsconfig
+.vscode/
+makefile
+*.txt
+*.out
+
+#execute file
+executes/
