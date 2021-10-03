@@ -32,13 +32,27 @@ public:
         }
         return length;
     }
+
+    int removeDuplicates2(vector<int>& nums) {
+        int currentIndex = 0;
+        int length = nums.size();
+        for (int i = 0; i < length; i++) {
+
+            if (nums[i] != nums[currentIndex]) {
+                currentIndex++;
+                nums[currentIndex] = nums[i];
+            }
+        }
+
+        return currentIndex + 1;
+    }
 };
 
 int main(int argc, char ** argv)
 {
-    vector<int> nums = {0,0,1,1,1,2,2,3,3,4};
+    vector<int> nums = {0,0,1,1,1,2,2,3,3,4,4};
     Solution solution = Solution();
-    int length = solution.removeDuplicates(nums);
+    int length = solution.removeDuplicates2(nums);
     cout << "length: " << length << endl;
     for (int i = 0; i < length; i++){
         cout << nums[i];
