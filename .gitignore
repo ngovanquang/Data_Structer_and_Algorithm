@@ -6,3 +6,4 @@ makefile
 
 #execute file
 executes/
+output/
