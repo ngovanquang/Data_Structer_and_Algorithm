@@ -20,15 +20,24 @@ public:
 
     int removeElement2(vector<int>& nums, int val) {
         int length = nums.size();
-        for (int i = 0; i < length; i++) {
-            if (nums[length - 1] == val) {
-                length--;
-            } else if (nums[i] == val) {
-                nums[i] = nums[length - 1];
-                length--;
+        int cnt = 0;
+        if (length == 0) return 0;
+        for (int i = 0; i < length; i++){
+            if (nums[i] == val) cnt++;
+        }
+        int result = length -cnt;
+        if (cnt == length) return 0;
+        int currentIndex = length - 1;
+        for (int i = 0; i < result; i++) {
+            while (nums[currentIndex] == val) {
+                currentIndex--;
+            }
+            if (nums[i] == val) {
+                nums[i] = nums[currentIndex];
+                currentIndex--;
             }
         }
-        return length;
+        return result;
     }
 };
 
