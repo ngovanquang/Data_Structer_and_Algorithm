@@ -1,7 +1,7 @@
 dir_out := output
 dir_exe := executes
 filepath := Array
-filename := HeightChecker
+filename := ThirdMaximumNumber
 type := cpp
 CC := g++
 opt := -g -std=c++17 -v
