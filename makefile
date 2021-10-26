@@ -1,7 +1,7 @@
 dir_out := output
 dir_exe := executes
-filepath := Training_1_Intro_20211
-filename := EXPMOD
+filepath := Array
+filename := HeightChecker
 type := cpp
 CC := g++
 opt := -g -std=c++17 -v
