@@ -1,7 +1,7 @@
 dir_out := output
 dir_exe := executes
 filepath := Array
-filename := ThirdMaximumNumber
+filename := Squares_of_a_SortedArray
 type := cpp
 CC := g++
 opt := -g -std=c++17 -v
