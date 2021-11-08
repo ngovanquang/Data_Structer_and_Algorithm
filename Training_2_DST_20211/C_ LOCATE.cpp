@@ -14,7 +14,7 @@ int main(int argc, char** argv){
             for (int k = 0; k < C; k++)
             {
                 cin >> temp;
-                data
+                data.push_back()
             }
             
         }
