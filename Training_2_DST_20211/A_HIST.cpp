@@ -8,53 +8,59 @@ typedef struct line
     vector<int> nums;
 } LINE;
 
-LINE input()
-{
-    char* s;
-    cin.getline(s, 200);
-    LINE temp;
-    temp.length = s[0];
-    for (int i = 1; i < s[0]; i++)
-    {
-        temp.nums.push_back(s[i]);
-    }
-    return temp;
-}
-
 void maxAreaHistogram(vector<int>& heights)
 {
     int length = heights.size();
-    stack<int> s;
-    
-    int max_area = 0;
-    int tp;
-    int area_with_top;
-
-    int i = 0;
-    while (i < length)
+    vector<int> left(length), right(length);
+    stack<int> mystack;
+    for (int i = 0; i < length; ++i)
     {
-        if (s.empty() || heights[s.top()] <= heights[i])
-            s.push(i++);
+        if(mystack.empty())
+        {
+            left[i] = 0;
+            mystack.push(i);
+        }
         else
         {
-            tp = s.top();
-            s.pop();
-            area_with_top = heights[tp] * (s.empty() ? i : (i - s.top() - 1));
-            if (max_area < area_with_top)
-                max_area = area_with_top;
+            while (!mystack.empty() && heights[mystack.top()] >= heights[i])
+            {
+                mystack.pop();
+            }
+            left[i] = mystack.empty()?0:mystack.top()+1;
+            mystack.push(i);
+            
         }
     }
     
-    while (s.empty() == false)
+    while (!mystack.empty())
     {
-        tp = s.top();
-        s.pop();
-        area_with_top = heights[tp] * (s.empty() ? i : (i - s.top() - 1));
-        if (max_area < area_with_top)
-            max_area = area_with_top;
+        mystack.pop();
     }
+    
 
-    cout << max_area << endl;
+    for (int i = length-1; i >= 0; i--)
+    {
+        if(mystack.empty())
+        {
+            right[i] = length - 1;
+            mystack.push(i);
+        }
+        else
+        {
+            while (!mystack.empty() && heights[mystack.top()] >= heights[i])
+            {
+                mystack.pop();
+            }
+            right[i] = mystack.empty()?(length-1):(mystack.top() - 1);
+            mystack.push(i);
+        }
+    }
+    unsigned long long mx_area = 0;
+    for (int i = 0; i < length; i++)
+    {
+        mx_area = max(mx_area, (unsigned long long)heights[i]*(right[i]-left[i]+1));
+    }
+    cout << mx_area << endl;
 }
 
 int main(int argc, char** argv)

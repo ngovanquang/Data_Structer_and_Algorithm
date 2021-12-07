@@ -1,7 +1,7 @@
 dir_out := output
 dir_exe := executes
 filepath := Training_2_DST_20211
-filename := A_HIST
+filename := B_POSTMAN
 type := cpp
 CC := g++
 opt := -g -std=c++17 -v

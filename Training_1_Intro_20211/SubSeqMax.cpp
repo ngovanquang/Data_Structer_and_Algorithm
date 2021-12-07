@@ -60,6 +60,18 @@ public:
         }
         return MAX;
     }
+public:
+    int calMaxOfSubSeq2(vector<int> &nums){
+        vector<int>f = {0};
+        int res = INT16_MIN;
+        for (int i = 1; i <= nums.size(); i++)
+        {
+            f[i] = max(nums[i], nums[i] + f[i - 1]);
+            res = max(res, f[i]);
+        }
+        
+        return res;
+    }
 };
 
 int main(int argc, char **argv)
