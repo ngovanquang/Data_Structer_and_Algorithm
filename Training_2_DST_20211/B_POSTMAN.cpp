@@ -2,7 +2,6 @@
 using namespace std;
 
 typedef pair<int, int> pii;
-
 int n, k;
 unsigned long long calcSegment(vector<pii>& a, unsigned int length)
 {
