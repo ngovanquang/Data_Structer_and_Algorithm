@@ -13,14 +13,13 @@ void Try (int k)
     {
         a[k] = i;
         if (k == n) {
-            for (int j = 0; j < n; j++)
+            for (int j = 1; j <= n; j++)
             {
-                cout << a[j] << "\t";
+                cout << a[j] << " ";
             }
-            
+            cout << '\n';
         }
         else Try (k + 1);
-        cout << endl;
     }
 }
 
@@ -28,6 +27,6 @@ int main (int argc, char** argv)
 {
     
     cin >> n;
-    Try(0);
+    Try(1);
     return 0;
 }
